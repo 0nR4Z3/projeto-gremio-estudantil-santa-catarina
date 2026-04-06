@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Matrículas 2025 — União PESC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><polygon points='40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1' fill='%23F5C200'/></svg>">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+<div class="noise"></div><div id="cur"></div><div id="cring"></div><div id="spotlight"></div><div id="prog"></div>
+
+<div id="intro">
+  <canvas id="intro3d"></canvas>
+  <div class="i-scanline" id="iScan"></div>
+  <div class="i-corners"><div class="i-corner tl"></div><div class="i-corner tr"></div><div class="i-corner bl"></div><div class="i-corner br"></div></div>
+  <div class="i-stripe" id="iSA" style="height:14px;"></div>
+  <div class="i-stripe b" id="iSB" style="height:9px;"></div>
+  <div id="introContent">
+    <div class="i-eye-clip"><span class="i-eye-txt" id="iEye">E.E.E.M. Santa Catarina</span></div>
+    <div class="i-clip"><span class="i-uniao" id="iU">MATRÍ</span></div>
+    <div class="i-clip"><span class="i-pesc" id="iP">CULAS</span></div>
+    <div class="i-sub-clip"><span class="i-sub" id="iSub">Período de inscrição 2025</span></div>
+  </div>
+  <div class="i-progress"><div class="i-pct" id="iPct">000</div><div class="i-bar" id="iBar"></div></div>
+</div>
+
+<div id="gl"><canvas id="webgl"></canvas></div>
+
+<div id="mOv">
+  <div class="mst"></div>
+  <a href="index.html" class="ml" data-mob>Início</a>
+  <a href="historia.html" class="ml" data-mob>História</a>
+  <a href="atividades.html" class="ml" data-mob>Atividades</a>
+  <a href="gremio.html" class="ml" data-mob>Grêmio</a>
+  <a href="matriculas.html" class="ml" data-mob>Matrículas</a>
+  <a href="contato.html" class="ml" data-mob>Contato</a>
+  <div class="mst"></div>
+  <a href="contato.html" class="mc" data-mob>Fale conosco</a>
+</div>
+
+<nav id="navBar">
+  <a href="index.html" class="nb" id="nBrand">
+    <svg class="nav-star" width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg>
+    <span class="nb-txt">UNIÃO PESC</span>
+  </a>
+  <ul class="nl" id="nLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="historia.html">História</a></li>
+    <li><a href="atividades.html">Atividades</a></li>
+    <li><a href="gremio.html">Grêmio</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+
+<main id="main">
+  <section class="page-header">
+    <div class="h-band" id="hBand"></div>
+    <div class="ph-label">Inscrições abertas</div>
+    <h1><span>Matrículas</span><span><span class="yl">2025</span></span></h1>
+    <p class="ph-desc">Garanta sua vaga na E.E.E.M. Santa Catarina. Oferecemos Fundamental, Ensino Médio e EJA com excelência e tradição.</p>
+    <div class="ph-line"></div>
+  </section>
+
+  <div class="sdiv" id="sd0"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="courses">
+    <div class="c-head"><h2 class="c-title"><span class="ln">Turmas</span><span class="ln">disponíveis.</span></h2><span class="c-ct">2025</span></div>
+    <div>
+      <div class="cr"><span class="cr-num">01</span><span class="cr-name">Ensino Fundamental — 6º ao 9º ano</span><span class="cr-tag">Diurno</span><span class="cr-arr">→</span></div>
+      <div class="cr"><span class="cr-num">02</span><span class="cr-name">Ensino Médio — 1º Ano</span><span class="cr-tag">Diurno · Noturno</span><span class="cr-arr">→</span></div>
+      <div class="cr"><span class="cr-num">03</span><span class="cr-name">Ensino Médio — 2º Ano</span><span class="cr-tag">Diurno · Noturno</span><span class="cr-arr">→</span></div>
+      <div class="cr"><span class="cr-num">04</span><span class="cr-name">Ensino Médio — 3º Ano</span><span class="cr-tag">Diurno · Noturno</span><span class="cr-arr">→</span></div>
+      <div class="cr"><span class="cr-num">05</span><span class="cr-name">EJA — Educação de Jovens e Adultos</span><span class="cr-tag">Noturno</span><span class="cr-arr">→</span></div>
+    </div>
+  </section>
+
+  <div class="sdiv" id="sd1"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="features">
+    <div class="feat" data-tilt><div class="feat-n">01</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div><div class="feat-title">Documentação</div><div class="feat-desc">RG, CPF, certidão de nascimento, histórico escolar, comprovante de residência e 2 fotos 3x4.</div><div class="feat-bar"></div></div>
+    <div class="feat" data-tilt><div class="feat-n">02</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="feat-title">Período de inscrição</div><div class="feat-desc">As matrículas para 2025 estão abertas. Compareça à secretaria da escola com a documentação completa.</div><div class="feat-bar"></div></div>
+    <div class="feat" data-tilt><div class="feat-n">03</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="feat-title">Local</div><div class="feat-desc">Rua Matteo Gianella, 1160 — Bairro Santa Catarina, Caxias do Sul · RS · CEP 95034-240.</div><div class="feat-bar"></div></div>
+    <div class="feat" data-tilt><div class="feat-n">04</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="feat-title">Telefone</div><div class="feat-desc">Ligue para (54) 3217-0446 e tire suas dúvidas sobre matrículas, transferências e documentação.</div><div class="feat-bar"></div></div>
+  </section>
+
+  <section id="cta">
+    <div class="cta-pre" id="ctaPre">Não perca o prazo</div>
+    <h2 class="cta-head"><span class="ln">Garanta sua vaga</span><span class="ln"><span class="yl">na Santa.</span></span></h2>
+    <div class="cta-acts" id="ctaActs">
+      <a href="tel:+555432170446" class="cta-bp magnetic">Ligar agora</a>
+      <a href="contato.html" class="cta-bs magnetic">Converse conosco</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft">
+      <div><div class="ft-brand"><svg width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg><span class="ft-brand-n">UNIÃO PESC</span></div><p class="ft-tag">E.E.E.M. Santa Catarina — Rua Matteo Gianella, 1160 · Caxias do Sul, RS.</p></div>
+      <div class="ft-col"><div class="ft-ct">Navegação</div><ul><li><a href="index.html">Início</a></li><li><a href="historia.html">História</a></li><li><a href="atividades.html">Atividades</a></li><li><a href="gremio.html">Grêmio</a></li></ul></div>
+      <div class="ft-col"><div class="ft-ct">Contato</div><ul><li><a href="contato.html">Fale conosco</a></li><li><a href="tel:+555432170446">(54) 3217-0446</a></li><li><a href="https://www.instagram.com/eeem_santacatarina/" target="_blank">@eeem_santacatarina</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><div class="ft-copy">© 2025 União PESC · E.E.E.M. Santa Catarina · INEP 43043690</div></div>
+  </footer>
+</main>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contato — União PESC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><polygon points='40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1' fill='%23F5C200'/></svg>">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+<div class="noise"></div><div id="cur"></div><div id="cring"></div><div id="spotlight"></div><div id="prog"></div>
+
+<div id="intro">
+  <canvas id="intro3d"></canvas>
+  <div class="i-scanline" id="iScan"></div>
+  <div class="i-corners"><div class="i-corner tl"></div><div class="i-corner tr"></div><div class="i-corner bl"></div><div class="i-corner br"></div></div>
+  <div class="i-stripe" id="iSA" style="height:14px;"></div>
+  <div class="i-stripe b" id="iSB" style="height:9px;"></div>
+  <div id="introContent">
+    <div class="i-eye-clip"><span class="i-eye-txt" id="iEye">E.E.E.M. Santa Catarina</span></div>
+    <div class="i-clip"><span class="i-uniao" id="iU">CONVER</span></div>
+    <div class="i-clip"><span class="i-pesc" id="iP">SE CONOSCO</span></div>
+    <div class="i-sub-clip"><span class="i-sub" id="iSub">Estamos aqui para ajudar</span></div>
+  </div>
+  <div class="i-progress"><div class="i-pct" id="iPct">000</div><div class="i-bar" id="iBar"></div></div>
+</div>
+
+<div id="gl"><canvas id="webgl"></canvas></div>
+
+<div id="mOv">
+  <div class="mst"></div>
+  <a href="index.html" class="ml" data-mob>Início</a>
+  <a href="historia.html" class="ml" data-mob>História</a>
+  <a href="atividades.html" class="ml" data-mob>Atividades</a>
+  <a href="gremio.html" class="ml" data-mob>Grêmio</a>
+  <a href="matriculas.html" class="ml" data-mob>Matrículas</a>
+  <a href="contato.html" class="ml" data-mob>Contato</a>
+  <div class="mst"></div>
+  <a href="matriculas.html" class="mc" data-mob>Matrículas 2025</a>
+</div>
+
+<nav id="navBar">
+  <a href="index.html" class="nb" id="nBrand">
+    <svg class="nav-star" width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg>
+    <span class="nb-txt">UNIÃO PESC</span>
+  </a>
+  <ul class="nl" id="nLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="historia.html">História</a></li>
+    <li><a href="atividades.html">Atividades</a></li>
+    <li><a href="gremio.html">Grêmio</a></li>
+    <li><a href="matriculas.html">Matrículas</a></li>
+  </ul>
+  <a href="matriculas.html" class="nc" id="nCta">Matrícula 2025</a>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+
+<main id="main">
+  <section class="page-header">
+    <div class="h-band" id="hBand"></div>
+    <div class="ph-label">Fale conosco</div>
+    <h1><span>Converse</span><span><span class="yl">com a</span></span><span>gente.</span></h1>
+    <p class="ph-desc">Tire dúvidas, agende uma visita ou entre em contato com a secretaria. Estamos no coração do bairro Santa Catarina.</p>
+    <div class="ph-line"></div>
+  </section>
+
+  <div class="sdiv" id="sd0"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="contato">
+    <div>
+      <div class="ey">Canais de comunicação</div>
+      <h2 class="ct-head"><span class="ln">Estamos à sua</span><span class="ln"><span class="yl">disposição.</span></span></h2>
+      <p class="ct-body">Agende uma visita, tire suas dúvidas sobre matrículas 2025 ou entre em contato com a secretaria. Responderemos o mais breve possível.</p>
+      <div class="ct-map">Ver no mapa → Rua Matteo Gianella, 1160</div>
+    </div>
+    <div class="ct-items" id="ctItems">
+      <div class="ct-item"><div class="ct-ic">📍</div><div><div class="ct-il">Endereço</div><div class="ct-iv">Rua Matteo Gianella, 1160 — Bairro Santa Catarina · Caxias do Sul · RS · 95034-240</div></div></div>
+      <div class="ct-item"><div class="ct-ic">📞</div><div><div class="ct-il">Telefone</div><div class="ct-iv">(54) 3217-0446</div></div></div>
+      <div class="ct-item"><div class="ct-ic">✉</div><div><div class="ct-il">E-mail</div><div class="ct-iv">sta.catarina@yahoo.com.br</div></div></div>
+      <div class="ct-item"><div class="ct-ic">📸</div><div><div class="ct-il">Instagram</div><div class="ct-iv"><a href="https://www.instagram.com/eeem_santacatarina/" target="_blank" style="color:var(--yellow)">@eeem_santacatarina</a></div></div></div>
+      <div class="ct-item"><div class="ct-ic">🕐</div><div><div class="ct-il">Horário de atendimento</div><div class="ct-iv">Segunda a Sexta — Diurno & Noturno</div></div></div>
+    </div>
+  </section>
+
+  <div class="sdiv" id="sd7"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="insta">
+    <div class="insta-vis"><div class="insta-logo">📸</div><div class="insta-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>@eeem_santacatarina</div></div>
+    <div class="insta-text">
+      <div class="ey">Redes sociais</div>
+      <h2 class="insta-title"><span class="ln">Acompanhe a</span><span class="ln"><span style="color:var(--yellow)">Santa</span> no</span><span class="ln">Instagram.</span></h2>
+      <p class="insta-desc">Fotos, vídeos, bastidores e o dia a dia da nossa escola.</p>
+      <a href="https://www.instagram.com/eeem_santacatarina/" target="_blank" rel="noopener" class="insta-btn"><span class="scramble-target">Seguir no Instagram →</span></a>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="cta-pre" id="ctaPre">União PESC · Grêmio Estudantil · 2025</div>
+    <h2 class="cta-head"><span class="ln">Venha conhecer</span><span class="ln"><span class="yl">a Santa.</span></span></h2>
+    <div class="cta-acts" id="ctaActs">
+      <a href="tel:+555432170446" class="cta-bp magnetic">Ligar agora</a>
+      <a href="matriculas.html" class="cta-bs magnetic">Ver matrículas</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft">
+      <div><div class="ft-brand"><svg width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg><span class="ft-brand-n">UNIÃO PESC</span></div><p class="ft-tag">E.E.E.M. Santa Catarina — Rua Matteo Gianella, 1160 · Caxias do Sul, RS.</p></div>
+      <div class="ft-col"><div class="ft-ct">Navegação</div><ul><li><a href="index.html">Início</a></li><li><a href="historia.html">História</a></li><li><a href="atividades.html">Atividades</a></li><li><a href="gremio.html">Grêmio</a></li></ul></div>
+      <div class="ft-col"><div class="ft-ct">Contato</div><ul><li><a href="tel:+555432170446">(54) 3217-0446</a></li><li><a href="mailto:sta.catarina@yahoo.com.br">E-mail</a></li><li><a href="https://www.instagram.com/eeem_santacatarina/" target="_blank">@eeem_santacatarina</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><div class="ft-copy">© 2025 União PESC · E.E.E.M. Santa Catarina · INEP 43043690</div></div>
+  </footer>
+</main>
+<script src="main.js"></script>
+</body>
+</html>

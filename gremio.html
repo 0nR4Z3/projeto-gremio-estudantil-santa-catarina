@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Grêmio Estudantil — União PESC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><polygon points='40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1' fill='%23F5C200'/></svg>">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+<div class="noise"></div><div id="cur"></div><div id="cring"></div><div id="spotlight"></div><div id="prog"></div>
+
+<div id="intro">
+  <canvas id="intro3d"></canvas>
+  <div class="i-scanline" id="iScan"></div>
+  <div class="i-corners"><div class="i-corner tl"></div><div class="i-corner tr"></div><div class="i-corner bl"></div><div class="i-corner br"></div></div>
+  <div class="i-stripe" id="iSA" style="height:14px;"></div>
+  <div class="i-stripe b" id="iSB" style="height:9px;"></div>
+  <div id="introContent">
+    <div class="i-eye-clip"><span class="i-eye-txt" id="iEye">Grêmio Estudantil</span></div>
+    <div class="i-clip"><span class="i-uniao" id="iU">UNIÃO</span></div>
+    <div class="i-clip"><span class="i-pesc" id="iP">PESC</span></div>
+    <div class="i-sub-clip"><span class="i-sub" id="iSub">Protagonismo estudantil · Escola Santa Catarina</span></div>
+  </div>
+  <div class="i-progress"><div class="i-pct" id="iPct">000</div><div class="i-bar" id="iBar"></div></div>
+</div>
+
+<div id="gl"><canvas id="webgl"></canvas></div>
+
+<div id="mOv">
+  <div class="mst"></div>
+  <a href="index.html" class="ml" data-mob>Início</a>
+  <a href="historia.html" class="ml" data-mob>História</a>
+  <a href="atividades.html" class="ml" data-mob>Atividades</a>
+  <a href="gremio.html" class="ml" data-mob>Grêmio</a>
+  <a href="matriculas.html" class="ml" data-mob>Matrículas</a>
+  <a href="contato.html" class="ml" data-mob>Contato</a>
+  <div class="mst"></div>
+  <a href="matriculas.html" class="mc" data-mob>Matrículas 2025</a>
+</div>
+
+<nav id="navBar">
+  <a href="index.html" class="nb" id="nBrand">
+    <svg class="nav-star" width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg>
+    <span class="nb-txt">UNIÃO PESC</span>
+  </a>
+  <ul class="nl" id="nLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="historia.html">História</a></li>
+    <li><a href="atividades.html">Atividades</a></li>
+    <li><a href="matriculas.html">Matrículas</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <a href="matriculas.html" class="nc" id="nCta">Matrícula 2025</a>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+
+<main id="main">
+  <section class="page-header">
+    <div class="h-band" id="hBand"></div>
+    <div class="ph-label">Grêmio Estudantil</div>
+    <h1><span>União</span><span><span class="yl">PESC</span></span></h1>
+    <p class="ph-desc">Somos a voz dos estudantes. Organizamos, representamos e fortalecemos a comunidade escolar da E.E.E.M. Santa Catarina.</p>
+    <div class="ph-line"></div>
+  </section>
+
+  <div class="sdiv" id="sd0"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="manifesto">
+    <div class="mn-lbl" id="mnLbl">Quem somos</div>
+    <p class="mn-text" id="mnTxt">O <em>União PESC</em> é o grêmio estudantil da E.E.E.M. Santa Catarina. Nossa missão é <em>representar os interesses dos alunos</em>, promover eventos culturais e esportivos, organizar ações sociais e fortalecer o senso de <span class="yl">comunidade e pertencimento</span> dentro da escola. Acreditamos que cada estudante tem voz e que juntos podemos construir uma escola <em>melhor para todos.</em></p>
+  </section>
+
+  <div class="sdiv" id="sd1"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="features">
+    <div class="feat" data-tilt><div class="feat-n">01</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="feat-title">Representatividade</div><div class="feat-desc">Levamos as demandas dos alunos à direção da escola. Cada estudante merece ser ouvido e ter seus direitos respeitados.</div><div class="feat-bar"></div></div>
+    <div class="feat" data-tilt><div class="feat-n">02</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div><div class="feat-title">Eventos & Gincanas</div><div class="feat-desc">Organizamos a Gincana Interclasses, festas temáticas, torneios esportivos e ações culturais que marcam a vida escolar.</div><div class="feat-bar"></div></div>
+    <div class="feat" data-tilt><div class="feat-n">03</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div class="feat-title">Ações Sociais</div><div class="feat-desc">Campanhas de arrecadação, voluntariado e projetos solidários que conectam a escola com a comunidade do bairro Santa Catarina.</div><div class="feat-bar"></div></div>
+    <div class="feat" data-tilt><div class="feat-n">04</div><div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C200" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="feat-title">Protagonismo Juvenil</div><div class="feat-desc">Formamos líderes que saem da escola preparados para a vida. Participação política, organização e cidadania ativa.</div><div class="feat-bar"></div></div>
+  </section>
+
+  <div class="sdiv" id="sd2"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="depoimentos">
+    <div class="d-head"><span class="d-title">Vozes do grêmio.</span></div>
+    <div class="d-grid">
+      <div class="d-card" data-tilt><div class="d-qm">"</div><p class="d-quote">Fazer parte do União PESC me ensinou que juntos somos mais fortes. Cada gincana, cada ação social, cada reunião é um passo para uma escola melhor.</p><div class="d-sep"></div><div class="d-author">Presidente do Grêmio</div><div class="d-role">Gestão 2025</div></div>
+      <div class="d-card" data-tilt><div class="d-qm">"</div><p class="d-quote">O grêmio me deu voz. Antes eu só assistia, agora eu participo, opino e ajudo a construir. A Santa Catarina é nossa e nós a defendemos.</p><div class="d-sep"></div><div class="d-author">Diretora de Eventos</div><div class="d-role">Gestão 2025</div></div>
+      <div class="d-card" data-tilt><div class="d-qm">"</div><p class="d-quote">A gincana interclasses é o evento mais esperado do ano. Unimos turmas, fortalecemos laços e mostramos que a Santa Catarina é gigante.</p><div class="d-sep"></div><div class="d-author">Diretor de Esportes</div><div class="d-role">Gestão 2025</div></div>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="cta-pre" id="ctaPre">Junte-se a nós</div>
+    <h2 class="cta-head"><span class="ln">Faça parte do</span><span class="ln"><span class="yl">União PESC.</span></span></h2>
+    <div class="cta-acts" id="ctaActs">
+      <a href="contato.html" class="cta-bp magnetic">Converse conosco</a>
+      <a href="matriculas.html" class="cta-bs magnetic">Matrículas 2025</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft">
+      <div><div class="ft-brand"><svg width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg><span class="ft-brand-n">UNIÃO PESC</span></div><p class="ft-tag">Grêmio Estudantil — E.E.E.M. Santa Catarina · Caxias do Sul, RS.</p></div>
+      <div class="ft-col"><div class="ft-ct">Navegação</div><ul><li><a href="index.html">Início</a></li><li><a href="historia.html">História</a></li><li><a href="atividades.html">Atividades</a></li><li><a href="matriculas.html">Matrículas</a></li></ul></div>
+      <div class="ft-col"><div class="ft-ct">Contato</div><ul><li><a href="contato.html">Fale conosco</a></li><li><a href="https://www.instagram.com/eeem_santacatarina/" target="_blank">@eeem_santacatarina</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><div class="ft-copy">© 2025 União PESC · E.E.E.M. Santa Catarina · INEP 43043690</div></div>
+  </footer>
+</main>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>União PESC — E.E.E.M. Santa Catarina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><polygon points='40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1' fill='%23F5C200'/><polygon points='40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9' fill='%231565C0' opacity='.6'/></svg>">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+<div class="noise"></div><div id="cur"></div><div id="cring"></div><div id="spotlight"></div><div id="prog"></div>
+
+<div id="intro">
+  <canvas id="intro3d"></canvas>
+  <div class="i-scanline" id="iScan"></div>
+  <div class="i-corners"><div class="i-corner tl"></div><div class="i-corner tr"></div><div class="i-corner bl"></div><div class="i-corner br"></div></div>
+  <div class="i-stripe" id="iSA" style="height:14px;"></div>
+  <div class="i-stripe b" id="iSB" style="height:9px;"></div>
+  <div id="introContent">
+    <div class="i-eye-clip"><span class="i-eye-txt" id="iEye">E.E.E.M. Santa Catarina — Caxias do Sul, RS</span></div>
+    <div class="i-clip"><span class="i-uniao" id="iU">UNIÃO</span></div>
+    <div class="i-clip"><span class="i-pesc" id="iP">PESC</span></div>
+    <div class="i-sub-clip"><span class="i-sub" id="iSub">Grêmio Estudantil · Escola Santa Catarina</span></div>
+  </div>
+  <div class="i-progress"><div class="i-pct" id="iPct">000</div><div class="i-bar" id="iBar"></div></div>
+</div>
+
+<div id="gl"><canvas id="webgl"></canvas></div>
+
+<div id="mOv">
+  <div class="mst"></div>
+  <a href="index.html" class="ml" data-mob>Início</a>
+  <a href="historia.html" class="ml" data-mob>História</a>
+  <a href="atividades.html" class="ml" data-mob>Atividades</a>
+  <a href="gremio.html" class="ml" data-mob>Grêmio</a>
+  <a href="matriculas.html" class="ml" data-mob>Matrículas</a>
+  <a href="contato.html" class="ml" data-mob>Contato</a>
+  <div class="mst"></div>
+  <a href="matriculas.html" class="mc" data-mob>Matrículas 2025</a>
+</div>
+
+<nav id="navBar">
+  <a href="index.html" class="nb" id="nBrand">
+    <svg class="nav-star" width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg>
+    <span class="nb-txt">UNIÃO PESC</span>
+  </a>
+  <ul class="nl" id="nLinks">
+    <li><a href="historia.html">História</a></li>
+    <li><a href="atividades.html">Atividades</a></li>
+    <li><a href="gremio.html">Grêmio</a></li>
+    <li><a href="matriculas.html">Matrículas</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <a href="matriculas.html" class="nc" id="nCta">Matrícula 2025</a>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+
+<main id="main">
+  <section id="hero">
+    <div class="h-band" id="hBand"></div>
+    <div class="h-pre"><div class="h-pre-ln" id="hPL"></div><span>E.E.E.M. Santa Catarina — Rua Matteo Gianella, 1160 · Caxias do Sul, RS</span></div>
+    <h1 class="h-title"><span>Tradição</span><span><span class="yl">e futuro</span></span><span>unidos.</span></h1>
+    <div class="h-btm">
+      <div class="h-meta">
+        <div class="hm"><div class="hml">Fundada em</div><div class="hmv">1º de Abril, 1968</div></div>
+        <div class="hm"><div class="hml">Bairro</div><div class="hmv">Santa Catarina, Caxias do Sul</div></div>
+        <div class="hm"><div class="hml">Matrícula 2025</div><div class="hmv"><a href="matriculas.html" style="color:var(--yellow)">Vagas abertas →</a></div></div>
+      </div>
+      <div class="h-badge" id="hBadge"><div class="h-badge-n"><span style="color:var(--yellow)" id="badgeAnos">57</span><span style="font-size:.52em;color:var(--w35)">+</span></div><div class="h-badge-l">Anos de<br>história</div></div>
+    </div>
+    <div class="h-scrl" id="hScrl"><span class="h-scrl-t">SCROLL</span><div class="h-scrl-l" id="hSL"></div></div>
+  </section>
+
+  <div class="sdiv" id="sd0"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="sobre">
+    <div><div class="ey">Sobre a escola</div></div>
+    <div>
+      <h2 class="a-head"><span class="ln">Uma das mais</span><span class="ln"><span class="yl">tradicionais</span></span><span class="ln">de Caxias do Sul.</span></h2>
+      <div class="a-st" id="aSt"><div class="a-sa" id="aSa"></div><div class="a-sb" id="aSb"></div></div>
+      <p class="a-body">Fundada em 1º de abril de 1968, a E.E.E.M. Santa Catarina é uma das escolas mais tradicionais da região serrana do RS. Com quase 2.000 alunos, destaca-se pela Banda Marcial, Mini-Empresa e por ter sido a primeira em Caxias do Sul a adotar Qualidade Total.</p>
+      <div class="a-founded" id="aFounded"><div class="a-founded-l">Primeira diretora</div><div class="a-founded-v">Iró Nabinger Chiaradia</div></div>
+    </div>
+  </section>
+
+  <div class="ctrs">
+    <div class="ctr"><div class="ctr-n" data-t="57" data-s="+">0</div><div class="ctr-l">Anos de<br>história</div></div>
+    <div class="ctr"><div class="ctr-n" data-t="2000" data-s="+">0</div><div class="ctr-l">Alunos<br>ativos</div></div>
+    <div class="ctr"><div class="ctr-n" data-t="1968" data-s="">0</div><div class="ctr-l">Ano de<br>fundação</div></div>
+    <div class="ctr"><div class="ctr-n" data-t="1" data-s="ª">0</div><div class="ctr-l">Escola em CXS<br>em qualidade total</div></div>
+  </div>
+
+  <div class="mq"><div class="mq-t"><span>Tradição</span><span class="yl">★</span><span>Excelência</span><span class="bl">★</span><span>Banda Marcial</span><span class="yl">★</span><span>Mini-Empresa</span><span class="bl">★</span><span>Esporte</span><span class="yl">★</span><span>Arte</span><span class="bl">★</span><span>Projetos de Vida</span><span class="yl">★</span><span>Olimpíadas</span><span class="bl">★</span><span>Tradição</span><span class="yl">★</span><span>Excelência</span><span class="bl">★</span><span>Banda Marcial</span><span class="yl">★</span><span>Mini-Empresa</span><span class="bl">★</span><span>Esporte</span><span class="yl">★</span><span>Arte</span><span class="bl">★</span><span>Projetos de Vida</span><span class="yl">★</span><span>Olimpíadas</span><span class="bl">★</span></div></div>
+  <div class="sdiv" id="sd1"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="atividades">
+    <div class="at-head"><span class="at-title">Atividades que movem a escola.</span></div>
+    <div class="at-grid">
+      <div class="at-card featured"><span class="at-icon">🥁</span><div class="at-name">Banda Marcial</div><div class="at-desc">Símbolo máximo da escola. Desfiles, competições e eventos culturais.</div></div>
+      <div class="at-card"><span class="at-icon">🏢</span><div class="at-name">Mini-Empresa</div><div class="at-desc">Parceria com Junior Achievement.</div></div>
+      <div class="at-card"><span class="at-icon">⚽</span><div class="at-name">Futebol</div><div class="at-desc">Jogos Escolares da Serra.</div></div>
+      <div class="at-card"><span class="at-icon">🏐</span><div class="at-name">Vôlei & Handebol</div><div class="at-desc">Competições regionais.</div></div>
+      <div class="at-card"><span class="at-icon">🎭</span><div class="at-name">Teatro & Cultura</div><div class="at-desc">Grupo ativo e festival estudantil.</div></div>
+      <div class="at-card featured"><span class="at-icon">🤝</span><div class="at-name">Grêmio — União PESC</div><div class="at-desc">A voz dos alunos. Eventos, representatividade e protagonismo.</div></div>
+      <div class="at-card"><span class="at-icon">💃</span><div class="at-name">Dança</div><div class="at-desc">Grupos artísticos em festivais.</div></div>
+      <div class="at-card"><span class="at-icon">🧪</span><div class="at-name">Olimpíadas</div><div class="at-desc">Matemática, Física, Química.</div></div>
+    </div>
+  </section>
+  <div class="sdiv" id="sd4"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="cta">
+    <div class="cta-pre" id="ctaPre">União PESC · Grêmio Estudantil · 2025</div>
+    <h2 class="cta-head"><span class="ln">Faça parte da</span><span class="ln"><span class="yl">nossa história.</span></span></h2>
+    <div class="cta-acts" id="ctaActs">
+      <a href="matriculas.html" class="cta-bp magnetic">Matrículas 2025</a>
+      <a href="contato.html" class="cta-bs magnetic">Converse conosco</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft">
+      <div><div class="ft-brand"><svg width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg><span class="ft-brand-n">UNIÃO PESC</span></div><p class="ft-tag">E.E.E.M. Santa Catarina — Rua Matteo Gianella, 1160 · Caxias do Sul, RS.</p></div>
+      <div class="ft-col"><div class="ft-ct">Navegação</div><ul><li><a href="historia.html">História</a></li><li><a href="atividades.html">Atividades</a></li><li><a href="gremio.html">Grêmio</a></li><li><a href="matriculas.html">Matrículas</a></li></ul></div>
+      <div class="ft-col"><div class="ft-ct">Contato</div><ul><li><a href="contato.html">Fale conosco</a></li><li><a href="tel:+555432170446">(54) 3217-0446</a></li><li><a href="https://www.instagram.com/eeem_santacatarina/" target="_blank">@eeem_santacatarina</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><div class="ft-copy">© 2025 União PESC · E.E.E.M. Santa Catarina · INEP 43043690</div></div>
+  </footer>
+</main>
+<script src="main.js"></script>
+</body>
+</html>

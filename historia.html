@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>História — União PESC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><polygon points='40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1' fill='%23F5C200'/></svg>">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+<div class="noise"></div><div id="cur"></div><div id="cring"></div><div id="spotlight"></div><div id="prog"></div>
+
+<div id="intro">
+  <canvas id="intro3d"></canvas>
+  <div class="i-scanline" id="iScan"></div>
+  <div class="i-corners"><div class="i-corner tl"></div><div class="i-corner tr"></div><div class="i-corner bl"></div><div class="i-corner br"></div></div>
+  <div class="i-stripe" id="iSA" style="height:14px;"></div>
+  <div class="i-stripe b" id="iSB" style="height:9px;"></div>
+  <div id="introContent">
+    <div class="i-eye-clip"><span class="i-eye-txt" id="iEye">E.E.E.M. Santa Catarina</span></div>
+    <div class="i-clip"><span class="i-uniao" id="iU">NOSSA</span></div>
+    <div class="i-clip"><span class="i-pesc" id="iP">HISTÓRIA</span></div>
+    <div class="i-sub-clip"><span class="i-sub" id="iSub">Desde 1968 — Caxias do Sul, RS</span></div>
+  </div>
+  <div class="i-progress"><div class="i-pct" id="iPct">000</div><div class="i-bar" id="iBar"></div></div>
+</div>
+
+<div id="gl"><canvas id="webgl"></canvas></div>
+
+<div id="mOv">
+  <div class="mst"></div>
+  <a href="index.html" class="ml" data-mob>Início</a>
+  <a href="historia.html" class="ml" data-mob>História</a>
+  <a href="atividades.html" class="ml" data-mob>Atividades</a>
+  <a href="gremio.html" class="ml" data-mob>Grêmio</a>
+  <a href="matriculas.html" class="ml" data-mob>Matrículas</a>
+  <a href="contato.html" class="ml" data-mob>Contato</a>
+  <div class="mst"></div>
+  <a href="matriculas.html" class="mc" data-mob>Matrículas 2025</a>
+</div>
+
+<nav id="navBar">
+  <a href="index.html" class="nb" id="nBrand">
+    <svg class="nav-star" width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg>
+    <span class="nb-txt">UNIÃO PESC</span>
+  </a>
+  <ul class="nl" id="nLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="atividades.html">Atividades</a></li>
+    <li><a href="gremio.html">Grêmio</a></li>
+    <li><a href="matriculas.html">Matrículas</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <a href="matriculas.html" class="nc" id="nCta">Matrícula 2025</a>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+
+<main id="main">
+  <section class="page-header">
+    <div class="h-band" id="hBand"></div>
+    <div class="ph-label">Nossa trajetória</div>
+    <h1><span>57 anos</span><span><span class="yl">de história</span></span><span>e conquistas.</span></h1>
+    <p class="ph-desc">Da fundação em 1968 aos dias atuais, conheça os marcos que fizeram da Santa Catarina uma referência educacional em Caxias do Sul.</p>
+    <div class="ph-line"></div>
+  </section>
+
+  <div class="sdiv" id="sd0"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="history">
+    <div class="hist-head"><span class="hist-title">Linha do tempo.</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1968 — Fundação</div><div class="tl-name">Nascimento da Santa Catarina</div><div class="tl-desc">Em 1º de abril de 1968, a escola é fundada inicialmente no prédio da Escola São João Batista. A primeira diretora, Iró Nabinger Chiaradia, molda os alicerces de uma instituição que se tornaria referência na Serra Gaúcha.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1969 — Sede própria</div><div class="tl-name">Rua Matteo Gianella, 1160</div><div class="tl-desc">A escola se transfere para o prédio definitivo na esquina com a Av. Rossetti, no Bairro Santa Catarina — endereço que ocupa até hoje e que se tornou ponto de referência na comunidade.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">Anos 1970–80 — Consolidação</div><div class="tl-name">Crescimento e identidade</div><div class="tl-desc">A escola se consolida como referência no bairro. A Banda Marcial é fundada e se torna símbolo da identidade escolar, participando de desfiles e eventos em toda a região.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">Anos 1990 — Qualidade Total</div><div class="tl-name">Primeira escola de CXS com gestão da qualidade</div><div class="tl-desc">A Santa Catarina se torna a primeira escola de Caxias do Sul a adotar o programa de Qualidade Total, baseado no modelo japonês. Alunos, equipe e comunidade participam ativamente da gestão, reciclagem e organização.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2000s — Mini-Empresa</div><div class="tl-name">Parceria com Junior Achievement</div><div class="tl-desc">O programa Mini-Empresa é implementado, formando jovens empreendedores. Alunos criam e gerenciam empresas reais, desde o plano de negócios até a apresentação final para investidores.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2008 — 40 anos</div><div class="tl-name">Celebração histórica</div><div class="tl-desc">O aniversário de 40 anos é celebrado com solenidade na Câmara de Vereadores, apresentação da Banda Marcial, bolo de 40 metros e festa temática retrô. A escola reafirma seu compromisso com a comunidade.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2020s — Novo Ensino Médio</div><div class="tl-name">Projeto de Vida e itinerários formativos</div><div class="tl-desc">Com a reforma do Ensino Médio, a escola implementa o Projeto de Vida como componente curricular, itinerários formativos e participação ativa em Olimpíadas do Conhecimento de diversas áreas.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">Hoje — <span class="anos-dynamic"></span> anos</div><div class="tl-name">Quase 2.000 alunos, futuro brilhante</div><div class="tl-desc">Com diurno, noturno e EJA, a escola forma cidadãos do Fundamental ao Ensino Médio. O Grêmio Estudantil União PESC organiza eventos, defende direitos e fortalece a identidade estudantil.</div></div>
+    </div>
+  </section>
+
+  <div class="sdiv" id="sd2"><div class="sdiv-a"></div><div class="sdiv-b"></div></div>
+
+  <section id="valores">
+    <div class="v-head"><span class="v-title">Nossos valores.</span></div>
+    <div class="v-grid">
+      <div class="v-card" data-tilt><div class="v-num">01</div><div class="v-name">Tradição</div><div class="v-desc"><span class="anos-dynamic"></span> anos formando gerações de caxienses. Nosso passado é o alicerce do nosso futuro.</div></div>
+      <div class="v-card" data-tilt><div class="v-num">02</div><div class="v-name">Inovação</div><div class="v-desc">Primeira em qualidade total em CXS. Mini-Empresa, Projeto de Vida e Olimpíadas do Conhecimento.</div></div>
+      <div class="v-card" data-tilt><div class="v-num">03</div><div class="v-name">Comunidade</div><div class="v-desc">Família, escola e bairro unidos em torno do desenvolvimento humano e coletivo.</div></div>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="cta-pre" id="ctaPre">Venha nos conhecer</div>
+    <h2 class="cta-head"><span class="ln">Faça parte da</span><span class="ln"><span class="yl">nossa história.</span></span></h2>
+    <div class="cta-acts" id="ctaActs">
+      <a href="matriculas.html" class="cta-bp magnetic">Matrículas 2025</a>
+      <a href="contato.html" class="cta-bs magnetic">Converse conosco</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft">
+      <div><div class="ft-brand"><svg width="20" height="20" viewBox="0 0 80 80"><polygon points="40,4 49.4,27.1 74.2,28.9 55.2,45 61.2,69.1 40,56 18.8,69.1 24.8,45 5.8,28.9 30.6,27.1" fill="#F5C200"/><polygon points="40,18 45.9,31.9 60.9,33.2 49.5,43.1 52.9,57.8 40,50 27.1,57.8 30.5,43.1 19.1,33.2 34.1,31.9" fill="#1565C0" opacity=".6"/></svg><span class="ft-brand-n">UNIÃO PESC</span></div><p class="ft-tag">E.E.E.M. Santa Catarina — Rua Matteo Gianella, 1160 · Caxias do Sul, RS.</p></div>
+      <div class="ft-col"><div class="ft-ct">Navegação</div><ul><li><a href="index.html">Início</a></li><li><a href="atividades.html">Atividades</a></li><li><a href="gremio.html">Grêmio</a></li><li><a href="matriculas.html">Matrículas</a></li></ul></div>
+      <div class="ft-col"><div class="ft-ct">Contato</div><ul><li><a href="contato.html">Fale conosco</a></li><li><a href="tel:+555432170446">(54) 3217-0446</a></li><li><a href="https://www.instagram.com/eeem_santacatarina/" target="_blank">@eeem_santacatarina</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><div class="ft-copy">© 2025 União PESC · E.E.E.M. Santa Catarina · INEP 43043690</div></div>
+  </footer>
+</main>
+<script src="main.js"></script>
+</body>
+</html>
