@@ -22,21 +22,3 @@ Este projeto está sob a licença MIT.
 
 ---
 
-## 🛠️ Tecnologias
-
-| Camada        | Ferramentas                          |
-|---------------|--------------------------------------|
-| Estrutura     | HTML5 semântico                      |
-| Estilização   | CSS3 + Custom Properties + Clamp     |
-| Animações     | GSAP 3 + ScrollTrigger + ScrollTo    |
-| 3D / Canvas   | Three.js r128                        |
-| Deploy        | GitHub Pages / Vercel / Netlify      |
-| Fontes        | Bebas Neue, Cormorant Garamond, Space Mono |
-
----
-
-## 📁 Estrutura do Projeto
-
-
----
-
