@@ -2,8 +2,7 @@
 
 > Website institucional do Grêmio Estudantil União PESC da E.E.E.M. Santa Catarina, Caxias do Sul/RS.
 
-🔗 **Live Demo:**   https://0nr4z3.github.io/projeto-gremio-estudantil-santa-catarina/
-📧 **Contato:** sta.catarina@yahoo.com.br | 📸 [@eeem_santacatarina](https://instagram.com/eeem_santacatarina)
+🔗 **Live Demo:**  https://projeto-gremio-estudantil-santa-cat.vercel.app/
 
 ---
 
