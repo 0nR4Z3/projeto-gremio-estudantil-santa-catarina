@@ -96,18 +96,36 @@ function splitLetters(el) {
   skip.innerHTML = 'Pular intro <span class="kbd">ESC</span>';
   introEl.appendChild(skip);
 
-  /* video background (optional) */
+  /* video background — full-strength cinematic backdrop */
   const videoURL = 'intro-video.mp4';
   let videoEl = null;
   if (videoURL) {
     videoEl = document.createElement('video');
     videoEl.id = 'introVideo';
-    videoEl.src = videoURL;
-    videoEl.autoplay = true; videoEl.muted = true; videoEl.loop = true; videoEl.playsInline = true;
-    videoEl.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:2;pointer-events:none;filter:contrast(1.1) saturate(.7)';
+    videoEl.muted = true; videoEl.loop = true; videoEl.playsInline = true;
+    videoEl.setAttribute('muted', ''); videoEl.setAttribute('playsinline', '');
+    videoEl.preload = 'auto';
+    /* z-index 1: behind 3D star canvas (z-3), above #intro black bg */
+    videoEl.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:1;pointer-events:none;filter:contrast(1.08) saturate(.9) brightness(.92)';
     introEl.insertBefore(videoEl, introEl.firstChild);
-    videoEl.addEventListener('canplay', () => gsap.to(videoEl, { opacity: 0.22, duration: 1.6 }));
+
+    const revealVideo = () => {
+      /* avoid double-fire */
+      if (videoEl.__revealed) return; videoEl.__revealed = true;
+      /* kick play (autoplay can be blocked on some browsers until user interaction — muted+playsinline avoids that) */
+      const pp = videoEl.play();
+      if (pp && typeof pp.catch === 'function') pp.catch(() => {/* ignored — video can remain paused and still show first frame via 'poster' or fall back */});
+      gsap.to(videoEl, { opacity: 0.75, duration: 1.4, ease: 'power2.out' });
+    };
+    videoEl.addEventListener('loadeddata', revealVideo, { once: true });
+    videoEl.addEventListener('canplay', revealVideo, { once: true });
     videoEl.addEventListener('error', () => { if (videoEl && videoEl.parentNode) videoEl.parentNode.removeChild(videoEl); videoEl = null; });
+    /* set src AFTER listeners so cached-canplay doesn't race */
+    videoEl.src = videoURL;
+    /* if already ready synchronously (cached), call reveal next frame */
+    if (videoEl.readyState >= 2) requestAnimationFrame(revealVideo);
+    /* absolute safety net */
+    setTimeout(() => { if (videoEl && !videoEl.__revealed) revealVideo(); }, 700);
   }
 
   /* ── Three.js yellow star + inner blue ── */
