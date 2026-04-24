@@ -224,3 +224,147 @@ footer{padding:clamp(44px,7vw,76px) var(--px) clamp(22px,4vw,36px);border-top:1p
 .ft-copy{font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.17)}.ft-links{display:flex;gap:clamp(12px,2.5vw,22px);flex-wrap:wrap}.ft-links a{font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,.2);transition:color .3s}.ft-links a:hover{color:#fff}
 
 [data-tilt]{transform-style:preserve-3d;perspective:1000px}
+
+/* ═══════════════════════════════════════════════════════════
+   v2 — CINEMATIC UPGRADES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ====== INTRO v2 ====== */
+#intro{clip-path:inset(0 0 0 0);will-change:clip-path,transform}
+.i-grid{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;
+  background-image:
+    linear-gradient(to right,rgba(21,101,192,.07) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(21,101,192,.07) 1px,transparent 1px);
+  background-size:clamp(40px,6vw,80px) clamp(40px,6vw,80px);
+  -webkit-mask-image:radial-gradient(ellipse 65% 55% at center,#000 10%,transparent 75%);
+          mask-image:radial-gradient(ellipse 65% 55% at center,#000 10%,transparent 75%)}
+
+.i-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
+  background:radial-gradient(ellipse 70% 60% at center,transparent 30%,rgba(0,0,0,.85) 100%)}
+
+.i-meta{position:absolute;top:clamp(18px,3vw,36px);left:clamp(18px,4vw,48px);z-index:10;
+  font-size:clamp(8px,1vw,10px);letter-spacing:.35em;color:var(--w35);text-transform:uppercase;
+  opacity:0;display:flex;align-items:center;gap:10px}
+.i-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:iDotPulse 1.2s ease-in-out infinite}
+@keyframes iDotPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+
+.i-date{position:absolute;top:clamp(18px,3vw,36px);right:clamp(18px,4vw,48px);z-index:10;
+  font-size:clamp(8px,1vw,10px);letter-spacing:.35em;color:var(--w35);text-transform:uppercase;opacity:0;
+  font-variant-numeric:tabular-nums}
+
+.i-skip{position:absolute;bottom:clamp(18px,3vw,36px);left:clamp(18px,4vw,48px);z-index:11;
+  font-size:9px;letter-spacing:.28em;color:var(--w35);text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;opacity:0;cursor:pointer;transition:color .3s;font-family:inherit}
+.i-skip:hover{color:#fff}
+.i-skip .kbd{font-size:8px;padding:3px 7px;border:1px solid var(--w18);color:var(--w55);letter-spacing:.12em;border-radius:2px}
+.i-skip:hover .kbd{border-color:var(--blue);color:var(--blue)}
+
+/* letter-splitting inside intro words */
+.i-uniao,.i-pesc{transform:none!important}
+.i-char{display:inline-block;transform:translateY(115%);opacity:0;filter:blur(14px);will-change:transform,filter,opacity}
+.i-char.space{width:.22em}
+
+/* Progress tweaks */
+.i-progress{bottom:clamp(18px,3vw,36px);right:clamp(18px,4vw,48px);display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.i-pct{font-family:'Space Mono',monospace;font-variant-numeric:tabular-nums;font-size:clamp(9px,1.2vw,11px);letter-spacing:.3em;color:var(--w35)}
+.i-bar{position:static;width:clamp(70px,10vw,120px);height:1px;background:var(--w10);overflow:hidden;opacity:.85}
+.i-bar::after{content:'';display:block;height:100%;width:var(--p,0%);background:linear-gradient(90deg,var(--blue),var(--yellow));transition:width .05s linear}
+
+/* ====== PAGE TRANSITION ====== */
+#pageTransition{position:fixed;inset:0;z-index:500;pointer-events:none;display:flex;flex-direction:column}
+#pageTransition .pt-band{flex:1;background:#000;transform:scaleY(0);transform-origin:top;will-change:transform}
+#pageTransition.in .pt-band{transform-origin:bottom}
+#pageTransition .pt-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,9vw,140px);letter-spacing:.06em;color:var(--yellow);
+  opacity:0;text-align:center;line-height:.9;white-space:nowrap}
+#pageTransition .pt-label span{display:inline-block;overflow:hidden}
+#pageTransition .pt-sub{position:absolute;top:calc(50% + clamp(36px,5vw,72px));left:50%;transform:translateX(-50%);
+  font-size:clamp(9px,1.1vw,11px);letter-spacing:.4em;color:var(--w35);text-transform:uppercase;opacity:0;z-index:2}
+
+/* ====== UNIVERSAL WORD REVEAL ====== */
+.rv-w{display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit}
+.rv-w>i{display:inline-block;transform:translateY(115%);opacity:0;filter:blur(10px);font-style:inherit;will-change:transform,filter,opacity}
+
+/* ====== ENHANCED CURSOR LABEL ====== */
+#cring{display:flex;align-items:center;justify-content:center}
+#cring .c-label{position:absolute;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.28em;color:#fff;text-transform:uppercase;opacity:0;white-space:nowrap;pointer-events:none;transition:opacity .25s}
+#cring.hov-lbl{width:72px;height:72px;background:var(--blue);border-color:var(--blue);mix-blend-mode:normal}
+#cring.hov-lbl .c-label{opacity:1}
+
+/* ====== SIDE SCROLL DOTS ====== */
+#sideDots{position:fixed;right:clamp(14px,2vw,22px);top:50%;transform:translateY(-50%);z-index:150;display:flex;flex-direction:column;gap:14px;opacity:0;pointer-events:none}
+#sideDots.on{opacity:1;pointer-events:auto}
+#sideDots .sd{position:relative;width:18px;height:18px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#sideDots .sd::before{content:'';width:6px;height:6px;border-radius:50%;border:1px solid var(--w18);background:transparent;transition:all .35s var(--ease)}
+#sideDots .sd:hover::before{border-color:var(--blue)}
+#sideDots .sd.active::before{background:var(--yellow);border-color:var(--yellow);transform:scale(1.4);box-shadow:0 0 14px rgba(245,194,0,.4)}
+#sideDots .sd .sd-tip{position:absolute;right:26px;top:50%;transform:translateY(-50%) translateX(10px);white-space:nowrap;font-size:8px;letter-spacing:.3em;color:var(--w55);text-transform:uppercase;opacity:0;pointer-events:none;transition:all .3s var(--ease)}
+#sideDots .sd:hover .sd-tip{opacity:1;transform:translateY(-50%) translateX(0)}
+@media(max-width:900px){#sideDots{display:none}}
+
+/* ====== SCROLL INDICATOR PULSE ====== */
+.h-scrl-l{position:relative;overflow:hidden;height:0}
+.h-scrl-l::after{content:'';position:absolute;left:0;top:0;width:100%;height:30%;
+  background:linear-gradient(to bottom,transparent,var(--blue) 50%,transparent);
+  animation:scrlPulse 2.4s ease-in-out infinite}
+@keyframes scrlPulse{0%{transform:translateY(-100%);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateY(400%);opacity:0}}
+
+/* ====== NAV STAR IDLE + PROGRESS RING ====== */
+.nav-star{will-change:transform;filter:drop-shadow(0 0 0 transparent);transition:filter .5s}
+.nb:hover .nav-star{filter:drop-shadow(0 0 8px rgba(245,194,0,.6))}
+
+/* refined progress bar */
+#prog{height:1.5px;background:linear-gradient(90deg,var(--blue) 0%,var(--yellow) 60%,var(--yellow) 100%);box-shadow:0 0 12px rgba(21,101,192,.5)}
+
+/* ====== ENHANCED BUTTONS ====== */
+.cta-bp,.cta-bs{position:relative;isolation:isolate;overflow:hidden}
+.cta-bp::before{content:'';position:absolute;inset:0;background:var(--yellow);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease);z-index:-1}
+.cta-bp:hover::before{transform:scaleY(1);transform-origin:top}
+.cta-bp{transition:color .4s .1s,transform .3s,box-shadow .3s}
+.cta-bp:hover{color:#0a0a0a;box-shadow:0 12px 40px rgba(245,194,0,.25)}
+.cta-bs::before{content:'';position:absolute;inset:0;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease);z-index:-1}
+.cta-bs:hover::before{transform:scaleX(1)}
+.cta-bs{transition:color .4s .1s,border-color .3s,transform .3s}
+.cta-bs:hover{color:#fff;border-color:var(--blue)}
+
+/* nav cta fill */
+.nc{position:relative;isolation:isolate;overflow:hidden}
+.nc::before{content:'';position:absolute;inset:0;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease);z-index:-1}
+.nc:hover::before{transform:scaleX(1);transform-origin:left}
+.nc:hover{transform:none}
+
+/* ====== SECTION INDEX BADGE ====== */
+.sec-idx{position:absolute;top:clamp(24px,3.5vw,48px);right:var(--px);z-index:2;font-size:9px;letter-spacing:.36em;color:var(--w35);text-transform:uppercase;opacity:0;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:10px}
+.sec-idx::before{content:'';display:block;width:22px;height:1px;background:var(--blue)}
+.sec-idx b{color:var(--blue);font-weight:400}
+
+/* ====== IMPROVED CARD HOVER (atividades) ====== */
+.at-card{transition:background .4s var(--ease),transform .4s var(--ease)}
+.at-card:hover{transform:translateY(-4px)}
+.at-card .at-icon{transition:transform .5s var(--ease),filter .5s}
+.at-card:hover .at-icon{transform:translateY(-4px) scale(1.08);filter:drop-shadow(0 6px 14px rgba(21,101,192,.35))}
+
+/* ====== HERO MICRO-DETAIL ====== */
+.h-pre span{font-variant-numeric:tabular-nums}
+.h-badge{position:relative}
+.h-badge::before{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px dashed rgba(245,194,0,.25);animation:badgeRot 24s linear infinite;pointer-events:none;opacity:0;transition:opacity .4s}
+.h-badge:hover::before{opacity:1}
+@keyframes badgeRot{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* ====== FOOTER ACCENT ====== */
+footer{position:relative}
+footer::before{content:'';position:absolute;top:-1px;left:0;height:1px;width:0;background:linear-gradient(90deg,var(--blue),var(--yellow),transparent);transition:width 1.4s var(--ease)}
+footer.seen::before{width:100%}
+
+/* ====== MARQUEE SHADOW EDGES ====== */
+.mq{position:relative}
+.mq::before,.mq::after{content:'';position:absolute;top:0;bottom:0;width:clamp(60px,10vw,160px);z-index:2;pointer-events:none}
+.mq::before{left:0;background:linear-gradient(to right,#000,transparent)}
+.mq::after{right:0;background:linear-gradient(to left,#000,transparent)}
+
+/* reduced-motion for new fx */
+@media(prefers-reduced-motion:reduce){
+  .i-grid,.i-vignette,#pageTransition,#sideDots{display:none!important}
+  .i-char,.rv-w>i{transform:none!important;filter:none!important;opacity:1!important}
+  .h-scrl-l::after{animation:none}
+}
